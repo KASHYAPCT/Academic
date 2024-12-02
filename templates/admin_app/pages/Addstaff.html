@@ -1,0 +1,57 @@
+{% extends "admin_app/components/base.html" %}
+{% load static %}
+{% block content %}
+
+{% include 'admin_app/components/header.html' %}
+<div class="container-fluid py-4">
+    {% include 'admin_app/components/alert.html' %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header pb-0">
+                    <div class="d-flex align-items-center">
+                        <p class="mb-0">Add Staff</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="id_fac_id" class="form-control-label">Faculty ID:</label>
+                                    <input type="text" name="fac_id" id="id_fac_id" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="id_depart_id" class="form-control-label">Department ID:</label>
+                                    <input type="text" name="depart_id" id="id_depart_id" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="id_name" class="form-control-label">Name:</label>
+                                    <input type="text" name="name" id="id_name" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="id_password" class="form-control-label">Password:</label>
+                                    <input type="password" name="password" id="id_password" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12 d-flex justify-content-end">
+                                <button class="btn btn-primary" type="submit">Add Staff</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</main>
+{% endblock content %}
