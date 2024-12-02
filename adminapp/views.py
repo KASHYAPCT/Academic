@@ -1,6 +1,8 @@
-from django.shortcuts import *
+from django.shortcuts import*
 from django.contrib.auth import*
 from .models import *
+
+
 def Login(request):
     if request.method == 'POST':
         username1 = request.POST['username']
@@ -44,11 +46,11 @@ def logout_view(request):
 
 def Addstaff(request):
     if request.method=='POST':
-        fac_id = request.POST.get('fac_id')
-        depart_id = request.POST.get('depart_id')
-        name = request.POST.get('name')
-        password = request.POST.get('password')
-        Staff.objects.create_user(fac_id=fac_id,department=depart_id,fname=name,password=password,)
+        fac_id = request.POST['fac_id']
+        depart_id = request.POST['depart_id']
+        name = request.POST['name']
+        password = request.POST['password']
+        Staff.objects.create(fac_id=fac_id,department=depart_id,fname=name,password=password)
         return redirect(dashboard)
     else:
         return render(request, 'admin_app/pages/Addstaff.html')
