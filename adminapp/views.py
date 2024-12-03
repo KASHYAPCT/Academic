@@ -42,7 +42,7 @@ def dashboard(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('home')
+    return redirect('Login')
 
 def Addstaff(request):
     if request.method=='POST':
