@@ -16,7 +16,7 @@ class Department(models.Model):
   
 class Staff(models.Model):
     fac_id=models.ForeignKey(User,on_delete=models.CASCADE,limit_choices_to={'is_fac':True})
-    department=models.ForeignKey(Department,on_delete=models.CASCADE)
+    department=models.CharField(max_length=50,null=True,blank=True)
     fname=models.CharField(max_length=50,null=True,blank=True)
 
 

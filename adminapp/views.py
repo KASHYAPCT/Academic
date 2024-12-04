@@ -36,7 +36,6 @@ def dashboard(request):
     current_page = 'dashboard'
     context = {
         'current_page': current_page,
-    
     }
     return render(request, 'admin_app/pages/dashboard.html', context)
 
@@ -44,13 +43,23 @@ def logout_view(request):
     logout(request)
     return redirect('Login')
 
+
+
 def Addstaff(request):
-    if request.method=='POST':
+    if request.method == 'POST':
         fac_id = request.POST['fac_id']
         depart_id = request.POST['depart_id']
         name = request.POST['name']
         password = request.POST['password']
-        Staff.objects.create(fac_id=fac_id,department=depart_id,fname=name,password=password)
-        return redirect(dashboard)
+
+        # Fetch the User instance
+        user = get_object_or_404(User, pk=fac_id)
+
+        # Create the Staff object
+        Staff.objects.create(fac_id=user, department=depart_id, fname=name)
+        user.set_password(password)
+        user.save()
+
+        return redirect('dashboard')  # Use a URL name instead of a function
     else:
         return render(request, 'admin_app/pages/Addstaff.html')
