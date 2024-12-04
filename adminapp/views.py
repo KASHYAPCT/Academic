@@ -22,7 +22,7 @@ def Login(request):
 
             # Check if user is faculty
             elif user.is_fac:
-                return redirect('faculty_dashboard')  # Redirect to faculty dashboard
+                return redirect('staffdashboard')  # Redirect to faculty dashboard
 
         else:
             error = "Invalid username / password"
@@ -47,19 +47,39 @@ def logout_view(request):
 
 def Addstaff(request):
     if request.method == 'POST':
+        # Retrieve data from the form
         fac_id = request.POST['fac_id']
         depart_id = request.POST['depart_id']
         name = request.POST['name']
         password = request.POST['password']
+        dob = request.POST['dob']
+        place = request.POST['place']
+        address = request.POST['address']
+        email = request.POST['email']
 
-        # Fetch the User instance
-        user = get_object_or_404(User, pk=fac_id)
-
-        # Create the Staff object
-        Staff.objects.create(fac_id=user, department=depart_id, fname=name)
-        user.set_password(password)
-        user.save()
-
-        return redirect('dashboard')  # Use a URL name instead of a function
+        # Create a new user/staff record
+        # Replace `User.objects.create` with the model and fields used in your project
+        User.objects.create_user(
+            id=fac_id,
+            department=depart_id,
+            username=name,
+            password=password,  
+            dob=dob,
+            place=place,
+            address=address,
+            email=email,
+            is_fac=True
+        )
+       
+        # Redirect to the dashboard or another page
+        return redirect('dashboard') 
     else:
+        # Render the form page
         return render(request, 'admin_app/pages/Addstaff.html')
+
+def staffdashboard(request):
+    current_page = 'staffdashboard'
+    context = {
+        'current_page': current_page,
+    }
+    return render(request, 'admin_app/pages/staffdashboard.html', context)

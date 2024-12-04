@@ -9,19 +9,23 @@ class User(AbstractUser):
     place= models.CharField(max_length=100,null=True,blank=True)
     state = models.CharField(max_length=30,null=True,blank=True)
     image = models.ImageField(upload_to="user/",null=True,blank=True)
-    
-class Department(models.Model):
-    dep_id=models.IntegerField(null=True,blank=True)
-    dep_name=models.CharField(max_length=50,null=True,blank=True)
-  
-class Staff(models.Model):
-    fac_id=models.ForeignKey(User,on_delete=models.CASCADE,limit_choices_to={'is_fac':True})
     department=models.CharField(max_length=50,null=True,blank=True)
-    fname=models.CharField(max_length=50,null=True,blank=True)
+    address=models.CharField(max_length=150,null=True,blank=True)
+    
+    
+    
+    
+    
+    
+# class Department(models.Model):
+#     dep_id=models.IntegerField(null=True,blank=True)
+#     dep_name=models.CharField(max_length=50,null=True,blank=True)
+  
 
 
-class Stud(models.Model):
-    stud_id=models.ForeignKey(User,on_delete=models.CASCADE,limit_choices_to={'is_stud':True})
-    fname=models.CharField(max_length=50,null=True,blank=True)
-    lastname=models.CharField(max_length=50,null=True,blank=True)
+
+# class Stud(models.Model):
+#     stud_id=models.ForeignKey(User,on_delete=models.CASCADE,limit_choices_to={'is_stud':True})
+#     fname=models.CharField(max_length=50,null=True,blank=True)
+#     lastname=models.CharField(max_length=50,null=True,blank=True)
     
