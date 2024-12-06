@@ -22,10 +22,5 @@ class User(AbstractUser):
 #     dep_name=models.CharField(max_length=50,null=True,blank=True)
   
 
-
-
-# class Stud(models.Model):
-#     stud_id=models.ForeignKey(User,on_delete=models.CASCADE,limit_choices_to={'is_stud':True})
-#     fname=models.CharField(max_length=50,null=True,blank=True)
-#     lastname=models.CharField(max_length=50,null=True,blank=True)
+    
     
