@@ -16,7 +16,7 @@
               <div class="numbers">
                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Staff</p>
                 <h5 class="font-weight-bolder mb-0 ">
-                  {{ door_count }}
+                  {{ staff_count }}
                 </h5>
                 <!-- <p class="mb-0">
                   <span class="text-success text-sm font-weight-bolder">+55%</span>
@@ -41,7 +41,7 @@
               <div class="numbers">
                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Total student</p>
                 <h5 class="font-weight-bolder">
-                  {{ window_count }}
+                  {{ stud_count }}
                 </h5>
                 <!-- <p class="mb-0">
                   <span class="text-success text-sm font-weight-bolder">+3%</span>
@@ -139,7 +139,7 @@
               </svg>
             </span>
             <span>
-              <a href="">Manage staff</a>
+              <a href="{% url 'stafflist' %}">Manage staff</a>
             </span>
           </li>
 
@@ -150,7 +150,7 @@
             </svg>
           </span>
           <span>
-            <a href="">Add student</a>
+            <a href="{% url 'addstud' %}">Add student</a>
           </span>
         </li>
 
@@ -161,7 +161,7 @@
             </svg>
           </span>
           <span>
-            <a href="">manage student</a>
+            <a href="{% url 'studlist' %}">manage student</a>
           </span>
         </li>
         <li class="pb-2">
