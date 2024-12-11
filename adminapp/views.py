@@ -55,7 +55,6 @@ def Addstaff(request):
     if request.method == 'POST':
         # Retrieve data from the form
         fac_id = request.POST['fac_id']
-        depart_id = request.POST['depart_id']
         name = request.POST['name']
         password = request.POST['password']
         dob = request.POST['dob']
@@ -68,7 +67,6 @@ def Addstaff(request):
         # Replace `User.objects.create` with the model and fields used in your project
         User.objects.create_user(
             id=fac_id,
-            department=depart_id,
             username=name,
             password=password,  
             dob=dob,

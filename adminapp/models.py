@@ -9,16 +9,13 @@ class User(AbstractUser):
     place= models.CharField(max_length=100,null=True,blank=True)
     state = models.CharField(max_length=30,null=True,blank=True)
     image = models.ImageField(upload_to="user/",null=True,blank=True)
-    department=models.CharField(max_length=50,null=True,blank=True)
+    semester=models.CharField(max_length=50,null=True,blank=True)
     address=models.CharField(max_length=150,null=True,blank=True)
     
     
     
-    
-    
-    
 # class Department(models.Model):
-#     dep_id=models.IntegerField(null=True,blank=True)
+#     dep_id=models.ForeignKey(null=True,blank=True)
 #     dep_name=models.CharField(max_length=50,null=True,blank=True)
   
 
