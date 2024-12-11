@@ -11,11 +11,11 @@
                 <div class="card-header pb-0">
                     <div class="row">
                         <div class="col-6 d-flex align-items-center">
-                            <h6 class="mb-0">Faculty List</h6>
+                            <h6 class="mb-0">staff List</h6>
                         </div>
                         <div class="col-6 text-end">
                             <a href="{% url 'Addstaff' %}">
-                                <button class="btn btn-primary btn-sm mb-0">Add Faculty</button>
+                                <button class="btn btn-primary btn-sm mb-0">Add staff</button>
                             </a>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                                     <td>
                                         {% if faculty.image %}
                                             <a href="{{ faculty.image.url }}" target="_blank">
-                                                <img src="{{ faculty.image.url }}" alt="{{ faculty.image }}" class="img-fluid" style="max-width: 100px;">
+                                                <img src="{{ faculty.image.url }}" alt="{{ faculty.Username }}" class="img-fluid" style="max-width: 100px;">
                                             </a>
                                         {% else %}
                                             No Photo

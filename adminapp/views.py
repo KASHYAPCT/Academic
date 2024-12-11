@@ -103,7 +103,7 @@ def add_stud(request):
         photo = request.FILES.get('photo')
         phoneno = request.POST.get('phoneno')
         address = request.POST.get('address')
-        name = request.POST.get('name')
+        name = request.POST.get('username')
     
         try:
             stud= User.objects.create(
