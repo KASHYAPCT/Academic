@@ -3,6 +3,7 @@ from django.contrib.auth import*
 from .models import *
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404, redirect
 
 
 def Login(request):
@@ -61,10 +62,10 @@ def Addstaff(request):
         place = request.POST['place']
         address = request.POST['address']
         email = request.POST['email']
+        phnnum=request.POST['phoneno']
         photo = request.FILES['photo']
 
         # Create a new user/staff record
-        # Replace `User.objects.create` with the model and fields used in your project
         User.objects.create_user(
             id=fac_id,
             username=name,
@@ -72,6 +73,7 @@ def Addstaff(request):
             dob=dob,
             place=place,
             address=address,
+            phone_number=phnnum,
             email=email,
             image=photo,
             is_fac=True
@@ -143,3 +145,42 @@ def stud_list(request):
         'students': students
         }
     return render(request, 'admin_app/pages/studlist.html', context)
+
+
+
+def edit_staff(request, faculty_id):
+    faculty = get_object_or_404(User, id=faculty_id)  
+    if request.method == "POST":
+        faculty.id = request.POST.get('fac_id')
+        faculty.username = request.POST.get('name')
+        faculty.dob = request.POST.get('dob')
+        faculty.place = request.POST.get('place')
+        faculty.address = request.POST.get('address')
+        faculty.email = request.POST.get('email')
+        faculty.phone_number = request.POST.get('phoneno')
+
+    
+
+        # Handle photo
+        if 'photo' in request.FILES:
+            faculty.photo = request.FILES['photo']
+
+        faculty.save()
+        return redirect('stafflist')  # Replace 'staff_list' with your desired redirect view
+
+    return render(request, 'admin_app/pages/editstaff.html', {'faculty': faculty})
+
+def faculty_delete(request, faculty_id):
+    # Fetch the faculty instance
+    faculty = get_object_or_404(User, id=faculty_id)
+
+    try:
+        # Attempt to delete the faculty
+        faculty.delete()
+        messages.success(request, 'Faculty deleted successfully.')
+    except Exception as e:
+        # Handle deletion errors
+        messages.error(request, f'Error deleting faculty: {e}')
+    
+    # Redirect to the faculty list page
+    return redirect('stafflist')  # Replace with the actual name of your faculty list view

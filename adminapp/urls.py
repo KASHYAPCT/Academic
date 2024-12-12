@@ -12,7 +12,9 @@ urlpatterns = [
     path('accounts/password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='admin_app/pages/password_change_done.html'), name='password_change_done'),
     path('addstud/',views.add_stud,name="addstud"),
     path('stafflist/',views.staff_list,name="stafflist"),
-    path('studlist/',views.stud_list,name="studlist")
+    path('studlist/',views.stud_list,name="studlist"),
+    path('editstaff/<int:faculty_id>/', views.edit_staff, name="editstaff"),
+     path('deletefaculty/<int:faculty_id>/', views.faculty_delete, name='facultydelete'),
 
 
 ]
